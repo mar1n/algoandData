@@ -1,46 +1,38 @@
 function isSubSequence(str1, str2) {
-    let strLong = str1 + ' ' + str2
-    let run = 0
-    let times = str1.length
-    let pointer = 0
-    
-    var strCheck = ''
-    while(run < str2.length) {
-        
-        console.log('run', run)
-        if(str1[pointer] === str2[run]) {
-            console.log(str1[pointer],'pointer find letter at', run)
-            strCheck += `${run}`
-        }
-        if(times === 0) {
-            console.log('fft', strCheck)
-            break
-        }
-        // if(str1.length === str2.length && run + 1 === str1.length) {
-        //     console.log('loop')
-        // }
-        if(run === str1.length || str1.length === str2.length && run + 1 === str1.length) {
-            console.log('aa')
-            run = 0
-            pointer++
-            times--
-        } else {
-            run++
-            console.log('run', 'add')
-        }
+  let run = 0;
+  let times = str1.length;
+  let pointer = 0;
+
+  let result = "";
+  while (run < str2.length) {
+    if (str1[pointer] === str2[run]) {
+      if (result.length === str1.length) {
+        result =
+          result.slice(0, pointer) +
+          `${str1[pointer]}` +
+          result.slice(result.length, result.length);
+      } else {
+        result =
+          result.slice(0, run) +
+          `${str1[pointer]}` +
+          result.slice(run, str1.length);
+      }
     }
-    console.log('strCheck', strCheck)
-    // for(let value = 0; value < strCheck.length; value++) {
-    //     console.log(strCheck[value])
-    //     if(strCheck[value] > strCheck[value + 1]) {
-    //         return false
-    //     }
-    // }
-    // return true
-    //if(str1 === strCheck) return true
+    if (times === 0) {
+      break;
+    }
+    if (run === str2.length - 1) {
+      run = 0;
+      pointer++;
+      times--;
+    } else {
+      run++;
+    }
+  }
+  return result === str1
 }
 
-console.log(isSubSequence('sing', 'sting'))
+console.log(isSubSequence('abc', 'acb'));
 
 // isSubsequence('hello', 'hello world'); // true
 // isSubsequence('sing', 'sting'); // true
@@ -50,7 +42,7 @@ console.log(isSubSequence('sing', 'sting'))
 // 1234
 // sing
 
-// 12345 
+// 12345
 // sting
 
 // if(s[0] i[2] n[3] g[5])
