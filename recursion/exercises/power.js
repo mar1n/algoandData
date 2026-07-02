@@ -1,16 +1,17 @@
-var value = 3
-function test(x) {
-    // var value = x
-    // function inner() {
-    //     value--
-    // }
-    // inner()
-    // if(value === 0) {
-    //     return;
-    // }
-    if(value === 1) return x
-    console.log(x)
-    value--
-    return x * test(x)
+function close(num, power) {
+
+    var accumulator = power;
+    
+    function open() {
+        accumulator--;
+        console.log(accumulator);
+        return accumulator
+    }
+
+    open()
+    if(accumulator === 0) return num
+    return num * close(num, accumulator)
+
 }
-test(4)
+
+console.log(close(2, 3))
