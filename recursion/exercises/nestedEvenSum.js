@@ -5,7 +5,6 @@ function nestedEvenSum(obj, arr) {
     // add whatever parameters you deem necessary - good luck!
 
     if (arr.length) {
-        console.log('arr length')
         someArr = arr
     } else {
         someArr = Object.values(obj)
@@ -13,19 +12,14 @@ function nestedEvenSum(obj, arr) {
     //console.log('obj', obj)
 
     if (Object.prototype.toString.call(someArr[0]) === '[object Object]') {
-        console.log('object', someArr[0])
-        console.log('return object values', [...Object.values(someArr[0])])
-        return nestedEvenSum(obj, [...Object.values(someArr[0])])
+        return nestedEvenSum(obj, [...Object.values(someArr[0]),...someArr.slice(1)])
     }
-    if (typeof someArr[0] === 'number') {
+    if (typeof someArr[0] === 'number' && someArr[0] % 2 === 0) {
         accumulator += someArr[0]
-        console.log('number', someArr[0])
     }
-    console.log('accumulator', accumulator)
     if (!someArr.slice(1).length)
         return accumulator
     return nestedEvenSum(obj, someArr.slice(1))
-    //return 'pause'
 }
 
 var obj1 = {
@@ -67,6 +61,6 @@ var obj2 = {
     },
 };
 //console.log(Object.values(obj2))
-nestedEvenSum(obj1, []);
+//nestedEvenSum(obj1, []);
 // 6
-//nestedEvenSum(obj2); // 10
+nestedEvenSum(obj1, []); // 10
