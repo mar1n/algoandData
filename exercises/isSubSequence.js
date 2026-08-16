@@ -29,10 +29,10 @@ function isSubSequence(str1, str2) {
       run++;
     }
   }
-  return result === str1
+  return result === str1;
 }
 
-console.log(isSubSequence('abc', 'acb'));
+console.log(isSubSequence("abc", "acb"));
 
 // isSubsequence('hello', 'hello world'); // true
 // isSubsequence('sing', 'sting'); // true

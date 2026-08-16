@@ -1,32 +1,32 @@
 function findPair(arr, n) {
-    let result = false
-    let run = 0;
-    let pointer = 0;
+  let result = false;
+  let run = 0;
+  let pointer = 0;
 
-    if(!arr.length) {
-        return result
+  if (!arr.length) {
+    return result;
+  }
+  while (run < arr.length) {
+    if (run !== pointer) {
+      if (arr[run] - arr[pointer] === n) {
+        result = true;
+      }
     }
-    while(run < arr.length) {
-        if(run !== pointer) {
-            if(arr[run] - arr[pointer] === n) {
-                result = true
-            }
-        }
-        if(run === arr.length - 1) {
-            run = 0
-            pointer++
-        } else {
-            run++
-        }
-        if(pointer === arr.length - 1 && run === arr.length - 1) {
-            break
-        }
+    if (run === arr.length - 1) {
+      run = 0;
+      pointer++;
+    } else {
+      run++;
     }
+    if (pointer === arr.length - 1 && run === arr.length - 1) {
+      break;
+    }
+  }
 
-    return result
+  return result;
 }
 
-console.log(findPair([-4,4], -8))
+console.log(findPair([-4, 4], -8));
 
 // findPair([6,1,4,10,2,4], 2) // true
 // findPair([8,6,2,4,1,0,2,5,13],1) // true

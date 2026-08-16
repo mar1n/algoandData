@@ -1,26 +1,26 @@
 function minSubArrayLen(arr, r) {
   let left = 0;
-  let sum = 0
-  let counter = 0
-  let result = Infinity
+  let sum = 0;
+  let counter = 0;
+  let result = Infinity;
   for (let right = 0; right < arr.length; right++) {
     // expand window
-    sum += arr[right]
-    counter++
+    sum += arr[right];
+    counter++;
     while (sum >= 7) {
-      console.log('counter', counter)
+      console.log("counter", counter);
       // shrink window
-      sum -= arr[left]
-      console.log('sum', sum)
-      result = Math.min(result, right - left + 1)
-      console.log('result', result)
-      console.log('left', left)
+      sum -= arr[left];
+      console.log("sum", sum);
+      result = Math.min(result, right - left + 1);
+      console.log("result", result);
+      console.log("left", left);
       left++;
     }
 
     // update answer
   }
-  console.log('result', result)
+  console.log("result", result);
 }
 
 console.log(minSubArrayLen([2, 3, 1, 2, 4, 3], 7));

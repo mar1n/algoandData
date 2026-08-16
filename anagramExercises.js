@@ -1,33 +1,31 @@
 function validAnagram(first, second) {
-    if(first.length !== second.length) {
-        return false;
-    }
+  if (first.length !== second.length) {
+    return false;
+  }
 
-    let frequencyCounter1 = {}
-    let frequencyCounter2 = {}
+  let frequencyCounter1 = {};
+  let frequencyCounter2 = {};
 
-    for(let value of first) {
-        frequencyCounter1[value] = (frequencyCounter1[value] || 0) + 1
+  for (let value of first) {
+    frequencyCounter1[value] = (frequencyCounter1[value] || 0) + 1;
+  }
+  for (let value of second) {
+    frequencyCounter2[value] = (frequencyCounter2[value] || 0) + 1;
+  }
+  for (let key in frequencyCounter1) {
+    if (!(key in frequencyCounter2)) {
+      return false;
     }
-    for(let value of second) {
-        frequencyCounter2[value] = (frequencyCounter2[value] || 0) + 1
+    if (frequencyCounter1[key] !== frequencyCounter2[key]) {
+      return false;
     }
-    for(let key in frequencyCounter1) {
-        if(!(key in frequencyCounter2)) {
-            return false
-        }
-        if(frequencyCounter1[key] !== frequencyCounter2[key]) {
-            return false
-        }
-    }
-    return true
+  }
+  return true;
 }
 
-validAnagram("aaz", "zza")
-validAnagram("rat", "car")
-validAnagram("szymon", "nomyzs")
-
-
+validAnagram("aaz", "zza");
+validAnagram("rat", "car");
+validAnagram("szymon", "nomyzs");
 
 // validAnagram("", "") //true
 // validAnagram("aaz", "zza") //false
