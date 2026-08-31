@@ -87,11 +87,19 @@ class SinglyLinkedList {
         }
         return current;
     }
+    set(index, val) {
+        var foundNode = this.get(index);
+        if(foundNode) {
+            foundNode.val = val;
+            return true;
+        }
+            return false
+    }
 }
 
 var list = new SinglyLinkedList()
-list.push("HELLO");
-list.push("GOODBYE")
-list.push("!")
-list.push("<3")
-list.push(":)")
+
+list.push(100)
+list.push(201)
+list.push(250)
+list.push(350)
